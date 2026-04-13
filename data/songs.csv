@@ -9,3 +9,13 @@ id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness
 8,Night Drive Loop,Neon Echo,synthwave,moody,0.75,110,0.49,0.73,0.22
 9,Focus Flow,LoRoom,lofi,focused,0.40,80,0.59,0.60,0.78
 10,Rooftop Lights,Indigo Parade,indie pop,happy,0.76,124,0.81,0.82,0.35
+11,Broken Highway,Dusty Roads,country,sad,0.55,95,0.30,0.60,0.75
+12,Circuit Breaker,Voltage Drop,edm,energetic,0.96,140,0.72,0.92,0.03
+13,Velvet Soul,Mara Okafor,r&b,relaxed,0.58,88,0.76,0.67,0.48
+14,Cathedral Echo,Aria Collective,classical,peaceful,0.22,52,0.68,0.30,0.97
+15,Street Cipher,Kade Ramos,hip-hop,confident,0.77,95,0.55,0.81,0.15
+16,Rust and Rain,The Static Pines,alternative rock,melancholy,0.69,108,0.32,0.58,0.40
+17,Neon Serenade,Echo Drift,synthwave,romantic,0.71,105,0.78,0.76,0.20
+18,Dusty Porch Blues,Earl Hollow,blues,sad,0.44,84,0.38,0.48,0.82
+19,Mountain High,Cedar & Stone,folk,peaceful,0.33,76,0.73,0.52,0.91
+20,Bass Drop Theory,Flux Engine,edm,intense,0.94,145,0.61,0.89,0.04
