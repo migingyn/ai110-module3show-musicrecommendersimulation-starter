@@ -4,7 +4,7 @@
 
 This project is a content-based music recommender built from scratch in Python. It loads a catalog of songs from a CSV file, scores each song against a user's taste profile, and returns a ranked list of the top matches with plain-language explanations.
 
-The recommender uses three features — genre, mood, and energy — to calculate a compatibility score for every song. Genre matching carries the most weight (+2.0 points), followed by mood (+1.0 point), with energy similarity contributing up to +1.5 points based on how close the song's energy level is to the user's target. Songs are then sorted from highest to lowest score and the top results are printed to the terminal.
+The recommender uses three features, genre, mood, and energy, to calculate a compatibility score for every song. Genre matching carries the most weight (+2.0 points), followed by mood (+1.0 point), with energy similarity contributing up to +1.5 points based on how close the song's energy level is to the user's target. Songs are then sorted from highest to lowest score and the top results are printed to the terminal.
 
 ---
 
@@ -141,7 +141,7 @@ Run all profiles yourself with: `python -m src.main`
       Why:   energy similarity (+1.42)
 ```
 
-**Observation:** Genre weight (2.0) dominates the rankings. Sunrise City is a near-perfect match (genre + mood + energy). Gym Hero ranks second despite having the wrong mood because the genre match alone is worth more than a mood match in a different genre. Rooftop Lights places third from mood match alone — "indie pop" doesn't count as a genre match for "pop."
+**Observation:** Genre weight (2.0) dominates the rankings. Sunrise City is a near-perfect match (genre + mood + energy). Gym Hero ranks second despite having the wrong mood because the genre match alone is worth more than a mood match in a different genre. Rooftop Lights places third from mood match alone, "indie pop" doesn't count as a genre match for "pop."
 
 ---
 
@@ -183,7 +183,7 @@ Run all profiles yourself with: `python -m src.main`
 
 **Observation:** Both genre and mood match for the top two songs; energy becomes the tiebreaker. Library Rain (energy 0.35) scores a perfect 1.50 energy similarity because it exactly matches the target. The top 3 are all lofi tracks, showing that a well-represented genre dominates the list even when mood doesn't match (#3, Focus Flow).
 
-**Comparison with Happy Pop:** The output is completely different — both genre and energy are on opposite ends of the spectrum. Happy Pop surfaces loud, upbeat tracks; Chill Lofi surfaces quiet, low-energy tracks. This confirms the scoring formula is sensitive to all three features.
+**Comparison with Happy Pop:** The output is completely different, both genre and energy are on opposite ends of the spectrum. Happy Pop surfaces loud, upbeat tracks; Chill Lofi surfaces quiet, low-energy tracks. This confirms the scoring formula is sensitive to all three features.
 
 ---
 
@@ -223,7 +223,7 @@ Run all profiles yourself with: `python -m src.main`
       Why:   energy similarity (+1.30)
 ```
 
-**Observation:** The EDM profile correctly surfaces both EDM tracks first. Positions #3 and #4 are non-EDM songs that share the "intense" mood and high energy — showing that mood + energy can partially substitute for a missing genre match. The Chill Lofi songs disappear entirely from the top 5 because their energy (0.35–0.42) is far from the target of 0.95.
+**Observation:** The EDM profile correctly surfaces both EDM tracks first. Positions #3 and #4 are non-EDM songs that share the "intense" mood and high energy, showing that mood + energy can partially substitute for a missing genre match. The Chill Lofi songs disappear entirely from the top 5 because their energy (0.35–0.42) is far from the target of 0.95.
 
 **Comparison with Chill Lofi:** These two profiles produce completely non-overlapping top-5 lists. EDM favors loud, intense tracks with energy near 1.0; Chill Lofi favors quiet, focused tracks with energy near 0.35. This is the clearest demonstration that the energy dimension meaningfully separates different listener types.
 
@@ -265,7 +265,7 @@ Run all profiles yourself with: `python -m src.main`
       Why:   energy similarity (+1.40)
 ```
 
-**Observation:** Only one folk song exists in the catalog, so after the #1 result there are no more genre matches. The remaining slots are filled by low-energy songs from classical, ambient, lofi, and jazz — correct in "vibe" but not in genre. This highlights the small catalog problem: niche genres have only one representative, leaving no diversity in the results.
+**Observation:** Only one folk song exists in the catalog, so after the #1 result there are no more genre matches. The remaining slots are filled by low-energy songs from classical, ambient, lofi, and jazz, correct in "vibe" but not in genre. This highlights the small catalog problem: niche genres have only one representative, leaving no diversity in the results.
 
 **Comparison with EDM:** These profiles share zero overlap in their top 5. EDM surfaces high-energy electronic tracks; Folk surfaces quiet acoustic tracks. This pair best illustrates how the energy dimension alone can fully separate listener types even without relying on genre matches.
 
@@ -285,6 +285,6 @@ Run all profiles yourself with: `python -m src.main`
 
 See [model_card.md](model_card.md) for the full model card.
 
-Building this recommender made the "loop" structure of recommendation engines very concrete. Every song gets judged independently against the user's preferences and assigned a number. The ranking is just sorting those numbers. What seems "intelligent" in apps like Spotify is really an extremely large and well-tuned version of the same idea — every song in a catalog gets a score, and the highest ones surface.
+Building this recommender made the "loop" structure of recommendation engines very concrete. Every song gets judged independently against the user's preferences and assigned a number. The ranking is just sorting those numbers. What seems "intelligent" in apps like Spotify is really an extremely large and well-tuned version of the same idea, every song in a catalog gets a score, and the highest ones surface.
 
-The place where bias enters is in the weights. Choosing genre weight = 2.0 and mood weight = 1.0 is a design decision that encodes the assumption that genre matters twice as much as mood. In a real product, those weights would be learned from user behavior data, which means they would reflect the preferences of the majority of users — potentially at the expense of users whose tastes don't fit the dominant pattern.
+The place where bias enters is in the weights. Choosing genre weight = 2.0 and mood weight = 1.0 is a design decision that encodes the assumption that genre matters twice as much as mood. In a real product, those weights would be learned from user behavior data, which means they would reflect the preferences of the majority of users, potentially at the expense of users whose tastes don't fit the dominant pattern.
